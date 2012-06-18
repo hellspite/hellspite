@@ -1,0 +1,44 @@
+body{
+    background-color:#000;
+    color:#fff;
+}
+
+#logo img{
+    width:500px;
+}
+
+#logo{
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#coming{
+    position:relative;
+    top:-130px;
+}
+
+#coming p{
+    margin-top:80px;
+}
+
+#links{
+    width:370px;
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    top:-110px;
+}
+
+#links a{
+    text-decoration:none;
+}
+
+#links img{
+    height:80px;
+    margin-left:20px;
+}
+
+#links img.first{
+    margin-left:0;
+}

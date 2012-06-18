@@ -1,0 +1,3 @@
+HellspiteTemporaryBundle_homepage:
+    pattern:  /
+    defaults: { _controller: HellspiteTemporaryBundle:Default:index }

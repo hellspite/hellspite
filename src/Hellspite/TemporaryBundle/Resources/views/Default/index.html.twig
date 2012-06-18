@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{
+    asset('bundles/hellspitetemporary/css/temp.css') }}" />
+{% endblock %}
+
+{% block title %}
+    Hellspite - Coming Soon...
+{% endblock %}
+
+{% block body %}
+    <div id="logo">
+       <img src="{{ asset('bundles/hellspitetemporary/images/logo.svg') }}"
+       alt="Hellspite" /> 
+    </div>
+    <div id="coming" align="center">
+        coming soon...
+        <p>
+            more on:
+        </p>
+    </div>
+    <div id="links">
+        <a href="http://www.facebook.com/hellspiterm" title="facebook page"
+        target="_blank">
+            <img class="first" src="{{ asset('bundles/hellspitetemporary/images/facebook.svg') }}" alt="facebook" />
+        </a>
+        <a href="https://twitter.com/#!/HellspiteRM" title="twitter profile"
+        target="_blank">
+            <img src="{{ asset('bundles/hellspitetemporary/images/twitter.svg') }}" alt="twitter" />
+        </a>
+        <a href="http://soundcloud.com/hellspite" title="soundcloud"
+        target="_blank">
+            <img src="{{ asset('bundles/hellspitetemporary/images/soundcloud.png') }}" alt="soundcloud" />
+        </a>
+    </div>
+{% endblock %}

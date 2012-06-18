@@ -1,0 +1,7 @@
+parameters:
+#    hellspite_temporary.example.class: Hellspite\TemporaryBundle\Example
+
+services:
+#    hellspite_temporary.example:
+#        class: %hellspite_temporary.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
