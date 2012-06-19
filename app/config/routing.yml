@@ -1,3 +1,7 @@
+HellspiteAnnounceBundle:
+    resource: "@HellspiteAnnounceBundle/Resources/config/routing.yml"
+    prefix:   /
+
 HellspiteMainBundle:
     resource: "@HellspiteMainBundle/Resources/config/routing.yml"
     prefix:   /

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Hellspite\TemporaryBundle\HellspiteTemporaryBundle(),
             new Hellspite\MainBundle\HellspiteMainBundle(),
+            new Hellspite\AnnounceBundle\HellspiteAnnounceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
