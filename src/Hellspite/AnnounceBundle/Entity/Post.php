@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hellspite\AnnounceBundle\Entity\Post
  *
- * @ORM\Table()
+ * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="Hellspite\AnnounceBundle\Entity\PostRepository")
  */
 class Post
@@ -38,7 +38,7 @@ class Post
     /**
      * @var string $icon
      *
-     * @ORM\Column(name="icon", type="string", length=255)
+     * @ORM\Column(name="icon", type="string", length=255, nullable=true)
      */
     private $icon;
 
