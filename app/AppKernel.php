@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Hellspite\TemporaryBundle\HellspiteTemporaryBundle(),
+            new Hellspite\MainBundle\HellspiteMainBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
