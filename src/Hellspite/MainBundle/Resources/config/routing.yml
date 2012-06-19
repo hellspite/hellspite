@@ -1,3 +1,3 @@
 HellspiteMainBundle_homepage:
-    pattern:  /main
+    pattern:  /
     defaults: { _controller: HellspiteMainBundle:Default:index }
