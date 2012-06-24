@@ -11,15 +11,6 @@
     asset('bundles/hellspitemain/css/main.css') }}" />
 {% endblock %}
 
-{% block body %}
-    <div id="container">
-        <div id="header">
-            {% block header %}
-                <img src="{{ asset('bundles/hellspitemain/images/logo.svg') }}" alt="Hellspite" />
-            {% endblock %}
-        </div>
-        <div id="content">
-
-        </div>
-    </div>
+{% block main %}
+    {% render 'HellspiteAnnounceBundle:Default:index' %}
 {% endblock %}

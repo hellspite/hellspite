@@ -16,6 +16,7 @@ class LoadUserData implements FixtureInterface
         $today->setDate(new \DateTime());
         $today->setTitle('Test today');
         $today->setText('Lorem ipsum dolor sit amet');
+        $today->setSlug('test-today');
 
         $manager->persist($today);
 
@@ -24,6 +25,7 @@ class LoadUserData implements FixtureInterface
         $yesterday->setDate($y);
         $yesterday->setTitle('Test yesterday');
         $yesterday->setText('Lorem ipsum dolor sit amet');
+        $yesterday->setSlug('test-yesterday');
          
         $manager->persist($yesterday);
 

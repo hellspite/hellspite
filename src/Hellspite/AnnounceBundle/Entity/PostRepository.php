@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function getLatest($num = 4){
+        $query = $this->createQueryBuilder('p')
+            ->select('p')
+            ->addOrderBy('p.date', 'DESC')
+            ->setMaxResults($num)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

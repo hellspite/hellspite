@@ -1,1 +1,16 @@
-Hello {{ name }}!
+<div class="left box">
+    <div class="boxhead">News</div>
+    {% for post in posts %}
+        {% include 'HellspiteAnnounceBundle:Default:post.html.twig' with
+        {'post' : post} %}
+    {% endfor %}
+</div>
+
+<div class="right">
+    <div class="rightbox">
+        <div class="boxhead">Gigs</div>
+    </div>
+    <div class="rightbox">
+        <div class="boxhead">Twitter</div>
+    </div>
+</div>

@@ -7,7 +7,19 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <div id="container">
+                <div id="header">
+                    {% block header %}
+                        <img src="{{ asset('bundles/hellspitemain/images/logo.svg') }}" alt="Hellspite" />
+                    {% endblock %}
+                </div>
+                <div id="main">
+                    {% block main %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

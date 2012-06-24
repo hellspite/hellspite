@@ -6,20 +6,92 @@ body {
     background-attachment:fixed;
 }
 
+@font-face{
+    font-family:'TravelingTypewriter'; src: local('TravelingTypewriter'), url('../fonts/TravelingTypewriter.ttf') format('truetype'); 
+}
+
 #container{
     width:960px;
     margin-left:auto;
     margin-right:auto;
 }
 
-#content{
-    min-height:700px;
+.box{
     background-color:rgba(255, 255, 255, 0.5);
     border:1px solid #666;
     -moz-border-radius: 20px;
     border-radius: 20px;
 }
 
+.left{
+    min-height:700px;
+    width:600px;
+    float:left;
+}
+
+.right{
+    float:right;
+    width:340px;
+}
+
+.rightbox{
+    background-color:rgba(255, 255, 255, 0.5);
+    border:1px solid #666;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    height:400px;
+    margin-bottom:10px;
+}
+
+.boxhead{
+    background-color:#000;
+    color:#fff;
+    font-size:26px;
+    font-family:'TravelingTypewriter';
+    padding:15px;
+    padding-right:20px;
+    text-transform:uppercase;
+    -moz-border-top-left-radius: 20px;
+    border-top-left-radius: 20px;
+    -moz-border-top-right-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align:right;
+}
+
 #header img{
     width:400px;
+}
+
+.post{
+    margin-bottom:10px;
+}
+
+.post-head{
+    font-weight:bold;
+    color:#222;
+    background-color:#888;
+    padding:0 10px 0 10px;
+    height:18px;
+}
+
+.post-title{
+    float:left;
+}
+
+.post-date{
+    float:right;
+}
+
+.post-content{
+    padding:5px 10px 5px 10px;
+}
+
+.post-content a{
+    font-weight:bold;
+    color:#000;
+    text-decoration:underline;
+}
+
+.post-content a:hover{
+    text-decoration:none;
 }

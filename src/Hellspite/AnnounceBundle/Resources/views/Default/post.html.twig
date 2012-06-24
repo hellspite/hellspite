@@ -1,0 +1,15 @@
+<div class="post">
+    <div class="post-head">
+        <div class="post-title">
+            {{ post.title|title }}
+        </div>
+        <div class="post-date">
+            {{ post.date|date('d/m/Y') }}
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <div class="post-content">
+        {{ post.text|raw }}
+    </div>
+</div>
+
