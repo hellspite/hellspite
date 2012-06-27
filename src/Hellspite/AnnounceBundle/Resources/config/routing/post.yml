@@ -1,0 +1,30 @@
+admin_post:
+    pattern:  /
+    defaults: { _controller: "HellspiteAnnounceBundle:Post:index" }
+
+admin_post_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HellspiteAnnounceBundle:Post:show" }
+
+admin_post_new:
+    pattern:  /new
+    defaults: { _controller: "HellspiteAnnounceBundle:Post:new" }
+
+admin_post_create:
+    pattern:  /create
+    defaults: { _controller: "HellspiteAnnounceBundle:Post:create" }
+    requirements: { _method: post }
+
+admin_post_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "HellspiteAnnounceBundle:Post:edit" }
+
+admin_post_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "HellspiteAnnounceBundle:Post:update" }
+    requirements: { _method: post }
+
+admin_post_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "HellspiteAnnounceBundle:Post:delete" }
+    requirements: { _method: post }

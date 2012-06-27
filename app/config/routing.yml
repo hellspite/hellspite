@@ -1,3 +1,7 @@
+HellspiteAnnounceBundle_admin_post:
+    resource: "@HellspiteAnnounceBundle/Resources/config/routing/post.yml"
+    prefix:   /admin/post
+
 HellspiteAnnounceBundle:
     resource: "@HellspiteAnnounceBundle/Resources/config/routing.yml"
     prefix:   /
@@ -9,6 +13,7 @@ HellspiteMainBundle:
 HellspiteTemporaryBundle:
     resource: "@HellspiteTemporaryBundle/Resources/config/routing.yml"
     prefix:   /
+
 
 # Internal routing configuration to handle ESI
 #_internal:
