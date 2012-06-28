@@ -20,6 +20,6 @@ class PostType extends AbstractType
 
     public function getName()
     {
-        return 'hellspite_announcebundle_posttype';
+        return 'post';
     }
 }
