@@ -9,6 +9,9 @@
     </div>
     <div style="clear:both"></div>
     <div class="post-content">
+        {% if post.icon != '' %}
+            <img src="{{ asset(['uploads/announce/thumb/', post.icon] | join) }}" />
+        {% endif %}
         {{ post.text|raw }}
     </div>
 </div>

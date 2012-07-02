@@ -2,14 +2,21 @@
 
 namespace Hellspite\AnnounceBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
+use Imagine\Image\ImageInterface;
+
 
 /**
  * Hellspite\AnnounceBundle\Entity\Post
  *
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="Hellspite\AnnounceBundle\Entity\PostRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Post
 {
@@ -55,6 +62,65 @@ class Post
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
+
+    public $file;
+
+    public function getUploadsRoot(){
+        return __DIR__.'/../../../../web/uploads/announce/';
+    }
+
+    public function removeIcon(){
+        if($file = $this->getUploadsRoot().$this->getIcon())
+            unlink($file);
+        if($file = $this->getUploadsRoot().'thumb/'.$this->getIcon())
+            unlink($file);
+    }
+
+    /**
+     * @ORM\prePersist()
+     * @ORM\preUpdate()
+     */
+    public function preUpload(){
+        if(is_null($this->file))
+            return;
+
+        $this->setIcon($this->file->getClientOriginalName());
+    }
+
+    /**
+     * @ORM\postPersist()
+     * @ORM\postUpdate()
+     */
+    public function upload(){
+        if(is_null($this->file)){
+            return;
+        }
+
+        $this->file->move($this->getUploadsRoot(), $this->icon);
+
+        $thumb = new Imagine();
+
+        $size = new Box(210, 210);
+
+        $mode = ImageInterface::THUMBNAIL_OUTBOUND;
+
+        $original = $this->getUploadsRoot().$this->icon; 
+
+        $thumb->open($original)
+            ->thumbnail($size, $mode)
+            ->save($this->getUploadsRoot().'thumb/'.$this->icon)
+        ;
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\postRemove()
+     */
+    public function removeUpload(){
+        if($this->getIcon() != '')
+            $this->removeIcon();
+    }
 
     /**
      * Get id

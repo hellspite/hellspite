@@ -12,7 +12,7 @@ class PostType extends AbstractType
         $builder
             ->add('date')
             ->add('title')
-            ->add('icon')
+            ->add('file', 'file')
             ->add('text')
             ->add('slug')
         ;
