@@ -6,8 +6,8 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Title</th>
+                <th>{{ pagination.sortable('Date', 'p.date')|raw }}</th>
+                <th>{{ pagination.sortable('Title', 'p.title')|raw }}</th>
                 <th>Icon</th>
                 <th>Text</th>
                 <th>Slug</th>
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for i, entity in entities %}
+        {% for i, entity in pagination %}
             <tr class="{{ cycle(['odd', 'even'], i) }}">
                 <td>{% if entity.date %}{{ entity.date|date('d-m-Y') }}{% endif %}</td>
                 <td><a href="{{ path('admin_post_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
@@ -36,6 +36,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ pagination.render()|raw }}
+    </div>
 
     <ul>
         <li>

@@ -21,10 +21,21 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('HellspiteAnnounceBundle:Post')->getLatest(null);
+        //$entities = $em->getRepository('HellspiteAnnounceBundle:Post')->getLatest(null);
+
+        $dql = "SELECT p FROM HellspiteAnnounceBundle:Post p";
+        $query = $em->createQuery($dql);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
 
         return $this->render('HellspiteAnnounceBundle:Post:index.html.twig', array(
-            'entities' => $entities
+            //'entities' => $entities,
+            'pagination' => $pagination
         ));
     }
 

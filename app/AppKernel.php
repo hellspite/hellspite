@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Hellspite\TemporaryBundle\HellspiteTemporaryBundle(),
             new Hellspite\MainBundle\HellspiteMainBundle(),
             new Hellspite\AnnounceBundle\HellspiteAnnounceBundle(),
