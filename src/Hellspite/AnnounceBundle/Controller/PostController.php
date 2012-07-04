@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('HellspiteAnnounceBundle:Post')->findAll();
+        $entities = $em->getRepository('HellspiteAnnounceBundle:Post')->getLatest(null);
 
         return $this->render('HellspiteAnnounceBundle:Post:index.html.twig', array(
             'entities' => $entities
