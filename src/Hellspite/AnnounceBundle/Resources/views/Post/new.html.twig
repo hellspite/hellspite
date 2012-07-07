@@ -1,13 +1,65 @@
 {% extends '::admin.html.twig' %}
 
+{% block css %}
+    {{ parent() }}
+
+    <link type="text/css" href="{{ asset('css/smoothness/jquery-ui-1.8.21.custom.css') }}" rel="stylesheet" />
+
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('js/ui/i18n/jquery.ui.datepicker-it.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#post_date').datepicker();
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     <h1>New Post</h1>
 
     <form action="{{ path('admin_post_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <p>
-            <button type="submit">Create</button>
-        </p>
+        <table>
+            <tr class="odd">
+                <td>{{ form_label(form.date) }}</td>
+                <td>
+                    {{ form_errors(form.date) }}
+                    {{ form_widget(form.date) }}
+                </td>
+            </tr>
+            <tr class="even">
+                <td>{{ form_label(form.title) }}</td>
+                <td>
+                    {{ form_errors(form.title) }}
+                    {{ form_widget(form.title) }}
+                </td>
+            </tr>
+            <tr class="odd">
+                <td>{{ form_label(form.file) }}</td>
+                <td>
+                    {{ form_errors(form.file) }}
+                    {{ form_widget(form.file) }}
+                </td>
+            </tr>
+            <tr class="even">
+                <td>{{ form_label(form.text) }}</td>
+                <td>
+                    {{ form_errors(form.text) }}
+                    {{ form_widget(form.text) }}
+                </td>
+            </tr>
+
+            {{ form_rest(form) }}
+            <tr class="odd">
+                <td colspan="2">
+                    <button type="submit">Create</button>
+                </td>
+            </tr>
+        </table>
     </form>
 
     <ul class="record_actions">

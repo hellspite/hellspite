@@ -10,11 +10,14 @@ class PostType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('date', 'date', array(
+                'input' => 'string',
+                'widget' => 'single_text',
+                'format' => 'dd/M/yyyy'
+            ))
             ->add('title')
             ->add('file', 'file')
             ->add('text')
-            ->add('slug')
         ;
     }
 

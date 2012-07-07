@@ -59,7 +59,7 @@ class Post
 
     /**
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(length=128, unique=true)
+     * @ORM\Column(length=128, unique=true, nullable=true)
      */
     private $slug;
 
@@ -139,7 +139,10 @@ class Post
      */
     public function setDate($date)
     {
-        $this->date = $date;
+        if(is_string($date))
+            $this->date = new \DateTime($date);
+        else
+            $this->date = $date;
     }
 
     /**
