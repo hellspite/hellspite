@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: it }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -13,7 +13,7 @@ framework:
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     session:
-        default_locale: %locale%
+        default_locale: it
         auto_start:     true
 
 # Twig Configuration
@@ -48,6 +48,13 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
 
+        mappings:
+          translatable:
+            type:    annotation
+            alias:   Gedmo
+            prefix: Gedmo\Translatable\Entity
+            dir: "%kernel.root_dir%/../vendor/gedmo-doctrine-extensions/lib/Gedmo/Translatable/Entity"
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%
@@ -60,7 +67,8 @@ jms_security_extra:
     secure_all_services: false
 
 stof_doctrine_extensions:
-    default_locale:    it_IT
+    default_locale:    en_US
     orm:
         default:
            sluggable:    true
+           translatable: true

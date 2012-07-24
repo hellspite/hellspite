@@ -5,6 +5,7 @@ namespace Hellspite\AnnounceBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Translatable\Translatable;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
@@ -38,7 +39,7 @@ class Post
 
     /**
      * @var string $title
-     *
+     * @Gedmo\Translatable
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -52,10 +53,15 @@ class Post
 
     /**
      * @var text $text
-     *
+     * @Gedmo\Translatable
      * @ORM\Column(name="text", type="text")
      */
     private $text;
+
+    /**
+     * @Gedmo\Locale
+     */
+    private $locale;
 
     /**
      * @Gedmo\Slug(fields={"title"})
@@ -233,5 +239,10 @@ class Post
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

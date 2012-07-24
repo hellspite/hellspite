@@ -195,4 +195,22 @@ class PostController extends Controller
             ->getForm()
         ;
     }
+
+    public function deleteIconAction($id){
+    
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entity = $em->getRepository('HellspiteAnnounceBundle:Post')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Post entity.');
+        }
+
+        $entity->removeIcon();
+        $entity->setIcon('');
+
+        return $this->render('HellspiteAnnounceBundle:Post:icon.html.twig', array(
+            'entity'      => $entity,
+        ));
+    }
 }

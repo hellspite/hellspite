@@ -9,8 +9,6 @@
                 <th>{{ pagination.sortable('Date', 'p.date')|raw }}</th>
                 <th>{{ pagination.sortable('Title', 'p.title')|raw }}</th>
                 <th>Icon</th>
-                <th>Text</th>
-                <th>Slug</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,9 +17,7 @@
             <tr class="{{ cycle(['odd', 'even'], i) }}">
                 <td>{% if entity.date %}{{ entity.date|date('d-m-Y') }}{% endif %}</td>
                 <td><a href="{{ path('admin_post_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                <td>{{ entity.icon }}</td>
-                <td>{{ entity.text }}</td>
-                <td>{{ entity.slug }}</td>
+                <td><img src="{{ asset(['uploads/announce/thumb/', entity.icon] | join) }}" /></td>
                 <td>
                     <ul>
                         <li>

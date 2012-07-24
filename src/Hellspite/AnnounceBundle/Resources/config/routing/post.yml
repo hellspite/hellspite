@@ -1,3 +1,7 @@
+delete_icon:
+    pattern:  /{id}/delete-icon
+    defaults: { _controller: "HellspiteAnnounceBundle:Post:deleteIcon" }
+
 admin_post:
     pattern:  /
     defaults: { _controller: "HellspiteAnnounceBundle:Post:index" }
