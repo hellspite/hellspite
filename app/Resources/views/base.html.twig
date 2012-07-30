@@ -11,7 +11,9 @@
             <div id="container">
                 <div id="header">
                     {% block header %}
-                        <img src="{{ asset('bundles/hellspitemain/images/logo.svg') }}" alt="Hellspite" />
+                        <a href="{{ path('HellspiteMainBundle_homepage') }}">
+                            <img src="{{ asset('bundles/hellspitemain/images/logo.svg') }}" alt="Hellspite" />
+                        </a>
                     {% endblock %}
                 </div>
                 <div id="main">
