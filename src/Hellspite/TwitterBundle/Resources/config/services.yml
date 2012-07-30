@@ -1,0 +1,7 @@
+parameters:
+#    hellspite_twitter.example.class: Hellspite\TwitterBundle\Example
+
+services:
+#    hellspite_twitter.example:
+#        class: %hellspite_twitter.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
