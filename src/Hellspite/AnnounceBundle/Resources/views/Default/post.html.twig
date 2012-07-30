@@ -13,6 +13,12 @@
             <img src="{{ asset(['uploads/announce/thumb/', post.icon] | join) }}" />
         {% endif %}
         {{ post.text|raw }}
+        {% if show != true %}
+            <div class="permalink">
+                <a href="{{ path('HellspiteAnnounceBundle_show', {slug: post.slug})
+                }}">permalink</a>
+            </div>
+        {% endif %}
     </div>
 </div>
 

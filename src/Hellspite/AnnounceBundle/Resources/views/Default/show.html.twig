@@ -1,0 +1,11 @@
+{% extends 'HellspiteMainBundle:Default:index.html.twig' %}
+
+{% block title %}
+    {% for post in posts %}
+        {{ parent() }} - {{ post.title | title }}
+    {% endfor %}
+{% endblock %}
+
+{% block main %}
+    {% include 'HellspiteAnnounceBundle:Default:index.html.twig' with {'posts': posts, 'show': true} %}
+{% endblock %}
