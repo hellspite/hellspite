@@ -1,0 +1,7 @@
+parameters:
+#    hellspite_gig.example.class: Hellspite\GigBundle\Example
+
+services:
+#    hellspite_gig.example:
+#        class: %hellspite_gig.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
