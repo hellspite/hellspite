@@ -99,7 +99,7 @@ class Gig
 
         $thumb = new Imagine();
 
-        $size = new Box(210, 210);
+        $size = new Box(110, 110);
 
         $mode = ImageInterface::THUMBNAIL_OUTBOUND;
 

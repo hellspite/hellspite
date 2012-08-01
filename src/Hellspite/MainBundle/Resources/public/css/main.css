@@ -23,6 +23,10 @@ body {
     border-radius: 20px;
 }
 
+.long{
+    min-height:400px;
+}
+
 .left{
     min-height:700px;
     width:600px;

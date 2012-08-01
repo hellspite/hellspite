@@ -12,4 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class GigRepository extends EntityRepository
 {
+    public function getNext(){
+        $query = $this->createQueryBuilder('g')
+            ->select('g')
+            ->where('g.date >= :today')
+            ->setParameter('today', date('Y-m-d'))
+            ->orderBy('g.date', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    public function getPast(){
+        $query = $this->createQueryBuilder('g')
+            ->select('g')
+            ->where('g.date <= :today')
+            ->setParameter('today', date('Y-m-d'))
+            ->orderBy('g.date', 'ASC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }
