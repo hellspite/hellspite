@@ -26,9 +26,9 @@ class GigRepository extends EntityRepository
     public function getPast(){
         $query = $this->createQueryBuilder('g')
             ->select('g')
-            ->where('g.date <= :today')
+            ->where('g.date < :today')
             ->setParameter('today', date('Y-m-d'))
-            ->orderBy('g.date', 'ASC')
+            ->orderBy('g.date', 'DESC')
             ->getQuery();
 
         return $query->getResult();

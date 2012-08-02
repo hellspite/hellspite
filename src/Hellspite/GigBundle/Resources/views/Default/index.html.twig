@@ -1,1 +1,21 @@
-Hello {{ name }}!
+{% extends 'HellspiteGigBundle::layout.html.twig' %}
+
+{% block gigs %}
+    <div class="gig-section">
+        Next Gigs
+    </div>
+    {% if gigs|length == 0 %}
+        NO GIGS PLANNED FOR NOW
+    {% else %}
+        {% for gig in gigs %}
+            {% include 'HellspiteGigBundle:Default:gig.html.twig' with {'gig': gig } %}    
+        {% endfor %}
+    {% endif %}
+
+    <div class="gig-section">
+        Past Gigs
+    </div>
+    {% for past in pasts %}
+        {% include 'HellspiteGigBundle:Default:gig.html.twig' with {'gig': past } %}    
+    {% endfor %}
+{% endblock %}

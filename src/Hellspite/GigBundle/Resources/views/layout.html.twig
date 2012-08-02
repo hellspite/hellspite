@@ -1,5 +1,9 @@
 {% extends 'HellspiteMainBundle:Default:index.html.twig' %}
 
+{% block title %}
+    {{ parent() }} - Gigs
+{% endblock %}
+
 {% block main %}
     <div class="long box">    
         <div class="boxhead">
@@ -7,5 +11,6 @@
                 Gigs
             {% endblock %}
         </div>
+        {% block gigs %}{% endblock %}
     </div>
 {% endblock %}

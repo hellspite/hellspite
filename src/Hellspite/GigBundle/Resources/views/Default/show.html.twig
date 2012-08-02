@@ -1,5 +1,17 @@
 {% extends 'HellspiteGigBundle::layout.html.twig' %}
 
+{%block title %}
+    {{ parent() }} - {{ gig.title }}
+{% endblock %}
+
 {% block gigshead %}
-    {{ gig.title }}
+    {% if gig.title != '' %}
+        {{ gig.title }}
+    {% else %}
+        {{ gig.date|date('d/m/Y') }} @{{ gig.venue|title }}
+    {% endif %}
+{% endblock %}
+
+{% block gigs %}
+    {% include 'HellspiteGigBundle:Default:gig.html.twig' with {'gig': gig} %}
 {% endblock %}

@@ -1,5 +1,5 @@
 HellspiteGigBundle_homepage:
-    pattern:  /hello/{name}
+    pattern:  /gigs
     defaults: { _controller: HellspiteGigBundle:Default:index }
 
 HellspiteGigBundle_show:

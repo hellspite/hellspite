@@ -8,9 +8,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('HellspiteGigBundle:Default:index.html.twig', array('name' => $name));
+        $em = $this->getDoctrine()->getEntityManager();
+        $gigs = $em->getRepository('HellspiteGigBundle:Gig')->getNext(); 
+        $pasts = $em->getRepository('HellspiteGigBundle:Gig')->getPast();  
+        return $this->render('HellspiteGigBundle:Default:index.html.twig', array('gigs' => $gigs, 'pasts' => $pasts));
     }
 
     public function sideBarAction(){

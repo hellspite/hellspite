@@ -16,6 +16,27 @@ body {
     margin-right:auto;
 }
 
+.menu{
+    font-family:'TravelingTypewriter';
+    font-size:34px;
+    text-transform:uppercase;
+    float:right;
+    width:538px;
+    height:68px;
+    position:relative;
+    top:-7px;
+}
+
+.menu a{
+    color:#000;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.menu a:hover{
+    color:#444;
+}
+
 .box{
     background-color:rgba(255, 255, 255, 0.5);
     border:1px solid #666;
@@ -74,12 +95,21 @@ body {
     font-weight:bold;
     color:#222;
     background-color:#888;
-    padding:0 10px 0 10px;
+    padding:4px 10px 4px 10px;
     height:18px;
 }
 
 .post-title{
     float:left;
+}
+
+.post-title a{
+    color:#222;
+    text-decoration:none;
+}
+
+.post-title a:hover{
+    text-decoration:underline;
 }
 
 .post-date{
@@ -98,4 +128,34 @@ body {
 
 .post-content a:hover{
     text-decoration:none;
+}
+
+.gig-date{
+    float:left;
+}
+
+.gig-venue{
+    float:left;
+    margin-left:10px;
+}
+
+.gig-title{
+    float:left;
+    margin-left:10px;
+}
+
+.gig-title a{
+    color:#222;
+    text-decoration:none;
+}
+
+.gig-title a:hover{
+    text-decoration:underline;
+}
+
+.gig-section{
+    font-family:'TravelingTypewriter';
+    border-bottom:1px solid #222;
+    margin-top:10px;
+    padding-left:10px;
 }

@@ -31,9 +31,16 @@ class Gig
     /**
      * @var string $title
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
+
+    /**
+     * @var string $venue
+     *
+     * @ORM\Column(name="venue", type="string", length=255)
+     */
+    private $venue;
 
     /**
      * @var date $date
@@ -57,7 +64,7 @@ class Gig
     private $icon;
 
     /**
-     * @Gedmo\Slug(fields={"title"})
+     * @Gedmo\Slug(fields={"venue"})
      * @ORM\Column(length=128, unique=true, nullable=true)
      */
     private $slug;
@@ -99,7 +106,7 @@ class Gig
 
         $thumb = new Imagine();
 
-        $size = new Box(210, 210);
+        $size = new Box(110, 110);
 
         $mode = ImageInterface::THUMBNAIL_OUTBOUND;
 
@@ -233,5 +240,25 @@ class Gig
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set venue
+     *
+     * @param string $venue
+     */
+    public function setVenue($venue)
+    {
+        $this->venue = $venue;
+    }
+
+    /**
+     * Get venue
+     *
+     * @return string 
+     */
+    public function getVenue()
+    {
+        return $this->venue;
     }
 }
