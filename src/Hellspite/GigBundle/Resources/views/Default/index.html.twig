@@ -5,7 +5,9 @@
         Next Gigs
     </div>
     {% if gigs|length == 0 %}
-        NO GIGS PLANNED FOR NOW
+        <div class="post-content">
+            NO GIGS PLANNED FOR NOW
+        </div>
     {% else %}
         {% for gig in gigs %}
             {% include 'HellspiteGigBundle:Default:gig.html.twig' with {'gig': gig } %}    

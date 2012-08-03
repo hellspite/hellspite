@@ -1,3 +1,9 @@
-{% for gig in gigs %}
-    {% include 'HellspiteGigBundle:Default:gig.html.twig' with {'gig': gig} %}
-{% endfor %}
+{% if gigs|length == 0 %}
+    <div align="center" class="post-content">
+        NO GIGS PLANNED FOR NOW
+    </div>
+{% else %}
+    {% for gig in gigs %}
+        {% include 'HellspiteGigBundle:Default:gig.html.twig' with {'gig': gig} %}
+    {% endfor %}
+{% endif %}

@@ -97,6 +97,20 @@ body {
     background-color:#888;
     padding:4px 10px 4px 10px;
     height:18px;
+    background-image: linear-gradient(right , #FFFFFF 0%, #AAAAAA 75%, #888888 88%);
+    background-image: -o-linear-gradient(right , #FFFFFF 0%, #AAAAAA 75%, #888888 88%);
+    background-image: -moz-linear-gradient(right , #FFFFFF 0%, #AAAAAA 75%, #888888 88%);
+    background-image: -webkit-linear-gradient(right , #FFFFFF 0%, #AAAAAA 75%, #888888 88%);
+    background-image: -ms-linear-gradient(right , #FFFFFF 0%, #AAAAAA 75%, #888888 88%);
+
+    background-image: -webkit-gradient(
+    linear,
+    right bottom,
+    left bottom,
+    color-stop(0, #FFFFFF),
+    color-stop(0.75, #AAAAAA),
+    color-stop(0.88, #888888)
+    );
 }
 
 .post-title{
