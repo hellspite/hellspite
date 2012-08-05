@@ -1,0 +1,3 @@
+HellspiteMediaBundle_homepage:
+    pattern:  /media
+    defaults: { _controller: HellspiteMediaBundle:Default:index }

@@ -1,3 +1,7 @@
+HellspiteMediaBundle:
+    resource: "@HellspiteMediaBundle/Resources/config/routing.yml"
+    prefix:   /
+
 HellspiteGigBundle:
     resource: "@HellspiteGigBundle/Resources/config/routing.yml"
     prefix:   /

@@ -15,7 +15,14 @@
                             <img src="{{ asset('bundles/hellspitemain/images/logo.svg') }}" alt="Hellspite" />
                         </a>
                         <div class="menu">
-                            <a href="{{ path('HellspiteGigBundle_homepage') }}">Gigs</a>
+                            <ul>
+                                <li id="gigs-btn">
+                                    <a href="{{ path('HellspiteGigBundle_homepage') }}">Gigs</a>
+                                </li>
+                                <li id="media-btn">
+                                    <a href="{{ path('HellspiteMediaBundle_homepage') }}">Media</a>
+                                </li>
+                            </ul>
                         </div>
                         <div style="clear:both"></div>
                     {% endblock %}

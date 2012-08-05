@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Hellspite\AnnounceBundle\HellspiteAnnounceBundle(),
             new Hellspite\TwitterBundle\HellspiteTwitterBundle(),
             new Hellspite\GigBundle\HellspiteGigBundle(),
+            new Hellspite\MediaBundle\HellspiteMediaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

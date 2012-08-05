@@ -1,0 +1,7 @@
+parameters:
+#    hellspite_media.example.class: Hellspite\MediaBundle\Example
+
+services:
+#    hellspite_media.example:
+#        class: %hellspite_media.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
