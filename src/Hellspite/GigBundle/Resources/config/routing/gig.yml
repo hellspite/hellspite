@@ -1,0 +1,30 @@
+admin_gig:
+    pattern:  /
+    defaults: { _controller: "HellspiteGigBundle:Gig:index" }
+
+admin_gig_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HellspiteGigBundle:Gig:show" }
+
+admin_gig_new:
+    pattern:  /new
+    defaults: { _controller: "HellspiteGigBundle:Gig:new" }
+
+admin_gig_create:
+    pattern:  /create
+    defaults: { _controller: "HellspiteGigBundle:Gig:create" }
+    requirements: { _method: post }
+
+admin_gig_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "HellspiteGigBundle:Gig:edit" }
+
+admin_gig_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "HellspiteGigBundle:Gig:update" }
+    requirements: { _method: post }
+
+admin_gig_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "HellspiteGigBundle:Gig:delete" }
+    requirements: { _method: post }

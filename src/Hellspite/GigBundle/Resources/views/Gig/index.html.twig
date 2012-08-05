@@ -1,0 +1,43 @@
+{% extends '::admin.html.twig' %}
+
+{% block content %}
+    <h1>Gigs</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>{{ pagination.sortable('Date', 'g.date')|raw }}</th>
+                <th>{{ pagination.sortable('Title', 'g.title')|raw }}</th>
+                <th>{{ pagination.sortable('Venue', 'g.venue')|raw }}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i, entity in pagination %}
+            <tr class="{{ cycle(['odd', 'even'], i) }}">
+                <td>{% if entity.date %}<a href="{{ path('admin_gig_show', { 'id': entity.id }) }}">{{ entity.date|date('d-m-Y') }}</a>{% endif %}</td>
+                <td>{{ entity.title }}</td>
+                <td>{{ entity.venue }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_gig_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_gig_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_gig_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends '::admin.html.twig' %}
+
+{% block css %}
+    {{ parent() }}
+
+    <link type="text/css" href="{{ asset('css/smoothness/jquery-ui-1.8.21.custom.css') }}" rel="stylesheet" />
+
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('js/ui/i18n/jquery.ui.datepicker-it.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#gig_date').datepicker();
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1>Edit "{{ entity.title }}"</h1>
+
+    <form action="{{ path('admin_gig_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <table>
+            <tr class="odd">
+                <td>{{ form_label(edit_form.date) }}</td>
+                <td>
+                    {{ form_errors(edit_form.date) }}
+                    {{ form_widget(edit_form.date) }}
+                </td>
+            </tr>
+            <tr class="even">
+                <td>{{ form_label(edit_form.venue) }}</td>
+                <td>
+                    {{ form_errors(edit_form.venue) }}
+                    {{ form_widget(edit_form.venue) }}
+                </td>
+            </tr>
+            <tr class="odd">
+                <td>{{ form_label(edit_form.title) }}</td>
+                <td>
+                    {{ form_errors(edit_form.title) }}
+                    {{ form_widget(edit_form.title) }}
+                </td>
+            </tr>
+            <tr class="even">
+                <td>{{ form_label(edit_form.text) }}</td>
+                <td>
+                    {{ form_errors(edit_form.text) }}
+                    {{ form_widget(edit_form.text) }}
+                </td>
+            </tr>
+            <tr class="odd">
+                <td>{{ form_label(edit_form.file) }}</td>
+                <td>
+                    {{ form_errors(edit_form.file) }}
+                    {% if entity.icon != '' %}
+                        <div class="announce-icon">
+                            <img src="{{ asset(['uploads/gig/thumb/',
+                            entity.icon] | join) }}" /><br/>
+                            <button>Delete Icon</button><br/><br/>
+                        </div>
+                    {% endif %}
+                    {{ form_widget(edit_form.file) }}
+                </td>
+            </tr>
+
+            {{ form_rest(edit_form) }}
+
+            <tr class="even">
+                <td colspan="2">
+                    <button type="submit">Create</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_gig') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('admin_gig_delete', { 'id': entity.id }) }}" method="post">
+                {{ form_widget(delete_form) }}
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+{% endblock %}

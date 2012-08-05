@@ -5,3 +5,8 @@ HellspiteGigBundle_homepage:
 HellspiteGigBundle_show:
     pattern:  /show/{slug}
     defaults: { _controller: HellspiteGigBundle:Default:show }
+
+HellspiteGigBundle_admin_gig:
+        resource: "@HellspiteGigBundle/Resources/config/routing/gig.yml"
+        prefix:   /admin/gig
+
