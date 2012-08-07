@@ -3,14 +3,15 @@
 namespace Hellspite\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Hellspite\MediaBundle\Entity\Video
+ * Hellspite\MediaBundle\Entity\Album
  *
- * @ORM\Table(name="video")
- * @ORM\Entity(repositoryClass="Hellspite\MediaBundle\Entity\VideoRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Hellspite\MediaBundle\Entity\AlbumRepository")
  */
-class Video
+class Album
 {
     /**
      * @var integer $id
@@ -36,11 +37,20 @@ class Video
     private $subtitle;
 
     /**
-     * @var string $url
+     * @var date $date
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="date", type="date")
      */
-    private $url;
+    private $date;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album")
+     */
+    protected $photos;
+
+    public function __construct(){
+        $this->photos = new ArrayCollection();
+    }
 
 
     /**
@@ -94,22 +104,22 @@ class Video
     }
 
     /**
-     * Set url
+     * Set date
      *
-     * @param string $url
+     * @param date $date
      */
-    public function setUrl($url)
+    public function setDate($date)
     {
-        $this->url = $url;
+        $this->date = $date;
     }
 
     /**
-     * Get url
+     * Get date
      *
-     * @return string 
+     * @return date 
      */
-    public function getUrl()
+    public function getDate()
     {
-        return $this->url;
+        return $this->date;
     }
 }

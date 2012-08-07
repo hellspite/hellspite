@@ -3,11 +3,12 @@
 namespace Hellspite\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Hellspite\MediaBundle\Entity\Album
  *
- * @ORM\Table()
+ * @ORM\Table(name="album")
  * @ORM\Entity(repositoryClass="Hellspite\MediaBundle\Entity\AlbumRepository")
  */
 class Album
@@ -41,6 +42,15 @@ class Album
      * @ORM\Column(name="date", type="date")
      */
     private $date;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album")
+     */
+    protected $photos;
+
+    public function __construct(){
+        $this->photos = new ArrayCollection();
+    }
 
 
     /**
@@ -111,5 +121,25 @@ class Album
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Add photos
+     *
+     * @param Hellspite\MediaBundle\Entity\Photo $photos
+     */
+    public function addPhoto(\Hellspite\MediaBundle\Entity\Photo $photos)
+    {
+        $this->photos[] = $photos;
+    }
+
+    /**
+     * Get photos
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }
