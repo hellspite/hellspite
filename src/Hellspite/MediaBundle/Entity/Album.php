@@ -2,6 +2,8 @@
 
 namespace Hellspite\MediaBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -47,6 +49,12 @@ class Album
      * @ORM\OneToMany(targetEntity="Photo", mappedBy="album")
      */
     protected $photos;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true, nullable=true)
+     */
+    private $slug;
 
     public function __construct(){
         $this->photos = new ArrayCollection();
@@ -141,5 +149,25 @@ class Album
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

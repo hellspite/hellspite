@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class PhotoRepository extends EntityRepository
 {
+    public function getByAlbum($album){
+        $query = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.album = :album')
+            ->setParameter('album', $album)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

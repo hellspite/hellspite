@@ -1,3 +1,7 @@
 HellspiteMediaBundle_homepage:
     pattern:  /media
     defaults: { _controller: HellspiteMediaBundle:Default:index }
+
+HellspiteMediaBundle_album:
+    pattern:  /media/{slug}
+    defaults: { _controller: HellspiteMediaBundle:Default:album }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Hellspite\MediaBundle\Entity\Photo
  *
- * @ORM\Table()
+ * @ORM\Table(name="photo")
  * @ORM\Entity(repositoryClass="Hellspite\MediaBundle\Entity\PhotoRepository")
  */
 class Photo
@@ -90,5 +90,25 @@ class Photo
     public function getCaption()
     {
         return $this->caption;
+    }
+
+    /**
+     * Set album
+     *
+     * @param Hellspite\MediaBundle\Entity\Album $album
+     */
+    public function setAlbum(\Hellspite\MediaBundle\Entity\Album $album)
+    {
+        $this->album = $album;
+    }
+
+    /**
+     * Get album
+     *
+     * @return Hellspite\MediaBundle\Entity\Album 
+     */
+    public function getAlbum()
+    {
+        return $this->album;
     }
 }
