@@ -203,3 +203,11 @@ body {
     text-decoration:none;
     text-transform:uppercase;
 }
+
+.photo-thumb{
+    float:left;
+    border:2px solid #000;
+    width:144px;
+    height:144px;
+    margin-right:10px;
+}

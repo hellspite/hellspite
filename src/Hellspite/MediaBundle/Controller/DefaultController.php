@@ -17,7 +17,7 @@ class DefaultController extends Controller
 
     public function albumAction($slug){
         $em = $this->getDoctrine()->getEntityManager();
-        $album = $em->getRepository('HellspiteMediaBundle:Album')->findBySlug($slug);
+        $album = $em->getRepository('HellspiteMediaBundle:Album')->findOneBySlug($slug);
         $photos = $em->getRepository('HellspiteMediaBundle:Photo')->getByAlbum($album->getId());
 
         return $this->render('HellspiteMediaBundle:Default:album.html.twig', 

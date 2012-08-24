@@ -1,5 +1,19 @@
-{% extends 'Hellspite:Default:index.html.twig' %}
+{% extends 'HellspiteMainBundle:Default:index.html.twig' %}
 
 {% block title %}
     {{ parent() }} - {{ album.title }}
+{% endblock %}
+
+{% block main %}
+    <div class="long box">    
+        <div class="boxhead">{{ album.title }}</div>
+        <div class="post-content">
+            {% for photo in photos %}
+                <div class="photo-thumb">
+                    <img src="{{ asset(['uploads/photo/thumb/', photo.image] | join) }}" />
+                </div>
+            {% endfor %}
+            <div style="clear:both"></div>
+        </div>
+    </div>
 {% endblock %}
