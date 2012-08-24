@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class AlbumRepository extends EntityRepository
 {
+    public function getAll(){
+        $query = $this->createQueryBuilder('a')
+            ->select('a')
+            ->orderBy('a.date', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

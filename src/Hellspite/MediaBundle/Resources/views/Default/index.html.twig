@@ -6,7 +6,18 @@
 
 {% block main %}
 <div class="left box">
-    <div class="boxhead">Photos</div>
+    <div class="boxhead">Albums</div>
+    <div class="post-content">
+        <ul id="album-list">
+            {% for album in albums %}
+                <li>
+                    <a href="{{ path('HellspiteMediaBundle_album', {'slug': album.slug}) }}">
+                        {{ album.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
 <div class="right">

@@ -10,7 +10,9 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
-        return $this->render('HellspiteMediaBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getEntityManager();
+        $albums = $em->getRepository('HellspiteMediaBundle:Album')->getAll();
+        return $this->render('HellspiteMediaBundle:Default:index.html.twig', array('albums' => $albums));
     }
 
     public function albumAction($slug){

@@ -184,3 +184,22 @@ body {
     margin-top:10px;
     padding-left:10px;
 }
+
+#album-list{
+    list-style:none;
+}
+
+#album-list li{
+    background-image:url('../../../images/camera.png');
+    background-repeat:no-repeat;
+    background-position:0 0;
+    min-height:34px;
+    padding-top:16px;
+    padding-left:60px;
+    margin-bottom:10px;
+}
+
+#album-list li a{
+    text-decoration:none;
+    text-transform:uppercase;
+}
