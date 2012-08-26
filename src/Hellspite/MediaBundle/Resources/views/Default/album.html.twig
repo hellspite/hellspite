@@ -4,13 +4,49 @@
     {{ parent() }} - {{ album.title }}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{
+    asset('highslide/highslide.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript"
+    src="{{ asset('highslide/highslide-with-gallery.js') }}"></script>
+{% endblock %}
+
 {% block main %}
+    <script type="text/javascript">
+        hs.graphicsDir = '{{ asset('highslide/graphics/') }}';
+        hs.align = 'center';
+        hs.transitions = ['expand', 'crossfade'];
+        hs.outlineType = 'rounded-white';
+        hs.fadeInOut = true;
+        //hs.dimmingOpacity = 0.75;
+
+        // Add the controlbar
+        hs.addSlideshow({
+            //slideshowGroup: 'group1',
+            interval: 5000,
+                repeat: false,
+                useControls: true,
+                fixedControls: 'fit',
+                overlayOptions: {
+                    opacity: .75,
+                        position: 'bottom center',
+                        hideOnMouseOut: true
+                }
+        });
+    </script>
     <div class="long box">    
         <div class="boxhead">{{ album.title }}</div>
         <div class="post-content">
             {% for photo in photos %}
                 <div class="photo-thumb">
-                    <img src="{{ asset(['uploads/photo/thumb/', photo.image] | join) }}" />
+                    <a href="{{ asset(['uploads/photo/', photo.image] | join) }}" class="highslide" onclick="return hs.expand(this)">
+                        <img src="{{ asset(['uploads/photo/thumb/', photo.image] | join) }}" />
+                    </a>
                 </div>
             {% endfor %}
             <div style="clear:both"></div>
