@@ -1,0 +1,30 @@
+admin_photo:
+    pattern:  /
+    defaults: { _controller: "HellspiteMediaBundle:Photo:index" }
+
+admin_photo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HellspiteMediaBundle:Photo:show" }
+
+admin_photo_new:
+    pattern:  /new
+    defaults: { _controller: "HellspiteMediaBundle:Photo:new" }
+
+admin_photo_create:
+    pattern:  /create
+    defaults: { _controller: "HellspiteMediaBundle:Photo:create" }
+    requirements: { _method: post }
+
+admin_photo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "HellspiteMediaBundle:Photo:edit" }
+
+admin_photo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "HellspiteMediaBundle:Photo:update" }
+    requirements: { _method: post }
+
+admin_photo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "HellspiteMediaBundle:Photo:delete" }
+    requirements: { _method: post }

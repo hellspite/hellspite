@@ -1,3 +1,11 @@
+HellspiteMediaBundle_admin_album:
+    resource: "@HellspiteMediaBundle/Resources/config/routing/album.yml"
+    prefix:   /admin/album
+
+HellspiteMediaBundle_admin_photo:
+    resource: "@HellspiteMediaBundle/Resources/config/routing/photo.yml"
+    prefix:   /admin/photo
+
 HellspiteMediaBundle_homepage:
     pattern:  /media
     defaults: { _controller: HellspiteMediaBundle:Default:index }
