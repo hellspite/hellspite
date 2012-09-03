@@ -46,7 +46,7 @@ class Album
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album")
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album", cascade={"persist"})
      */
     protected $photos;
 
@@ -133,6 +133,14 @@ class Album
     public function getDate()
     {
         return $this->date;
+    }
+
+    public function setPhotos($photos){
+        foreach($photos as $photo){
+            $photo->setAlbum($this);
+        }
+
+        $this->photos = $photos;
     }
 
     /**

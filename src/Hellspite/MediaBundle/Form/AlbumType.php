@@ -16,7 +16,11 @@ class AlbumType extends AbstractType
             ))
             ->add('title')
             ->add('subtitle')
-            ->add('photos', 'collection', array('type' => new PhotoType()))
+            ->add('photos', 'collection', array(
+                'type' => new PhotoType(),
+                'allow_add' => true,
+                'by_reference' => false,
+            ))
         ;
     }
 

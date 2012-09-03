@@ -46,7 +46,7 @@ class Album
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album")
+     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album", cascade={"persist"})
      */
     protected $photos;
 
@@ -58,6 +58,10 @@ class Album
 
     public function __construct(){
         $this->photos = new ArrayCollection();
+    }
+
+    public function __toString(){
+       return $this->title;  
     }
 
 
@@ -149,5 +153,25 @@ class Album
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

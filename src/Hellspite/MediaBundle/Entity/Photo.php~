@@ -3,6 +3,10 @@
 namespace Hellspite\MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
+use Imagine\Image\ImageInterface;
 
 /**
  * Hellspite\MediaBundle\Entity\Photo
@@ -24,7 +28,7 @@ class Photo
     /**
      * @var string $image
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
@@ -40,6 +44,65 @@ class Photo
      * @ORM\JoinColumn(name="album", referencedColumnName="id")
      */
     protected $album;
+
+    public $file;
+
+    public function getUploadsRoot(){
+        return __DIR__.'/../../../../web/uploads/photo/';
+    }
+
+    public function removeImage(){
+        if($file = $this->getUploadsRoot().$this->getImage())
+            unlink($file);
+        if($file = $this->getUploadsRoot().'thumb/'.$this->getImage())
+            unlink($file);
+    }
+
+    /**
+     * @ORM\prePersist()
+     * @ORM\preUpdate()
+     */
+    public function preUpload(){
+        if(is_null($this->file))
+            return;
+
+        $this->setImage($this->file->getClientOriginalName());
+    }
+
+    /**
+     * @ORM\postPersist()
+     * @ORM\postUpdate()
+     */
+    public function upload(){
+        if(is_null($this->file)){
+            return;
+        }
+
+        $this->file->move($this->getUploadsRoot(), $this->image);
+
+        $thumb = new Imagine();
+
+        $size = new Box(144, 144);
+
+        $mode = ImageInterface::THUMBNAIL_OUTBOUND;
+
+        $original = $this->getUploadsRoot().$this->image; 
+
+        $thumb->open($original)
+            ->thumbnail($size, $mode)
+            ->save($this->getUploadsRoot().'thumb/'.$this->image)
+        ;
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\postRemove()
+     */
+    public function removeUpload(){
+        if($this->getImage() != '')
+            $this->removeImage();
+    }
 
 
     /**
