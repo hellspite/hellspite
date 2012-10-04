@@ -13,41 +13,9 @@
     <script type="text/javascript" src="{{ asset('js/ui/i18n/jquery.ui.datepicker-it.js') }}"></script>
 
     <script type="text/javascript">
-            // prepara un collegamento "aggiungere un tag"
-            var $addTagLink = $('<a href="#" class="add_photo_link">Add Photo</a>');
-            var $newLinkLi = $('<li></li>').append($addTagLink);
         $(document).ready(function() {
-
-            var collectionHolder = $('.admin-photos');
-
             $('#album_date').datepicker();
-
-            // aggiunge l'ancora "aggiungere un tag" e il li all'ul dei tag
-            collectionHolder.append($newLinkLi);
-
-            $addTagLink.on('click', function(e) {
-                // previene il "#" nell'URL
-                e.preventDefault();
-
-                // aggiunge un nuovo form tag (vedere il prossimo blocco di codice)
-                addPhotoForm();
-            });
         });
-
-        function addPhotoForm() {
-            var collectionHolder = $('.admin-photos');
-
-            // Prendere data-prototype, come spiegato in precedenze
-            var prototype = collectionHolder.attr('data-prototype');
-
-            // Sostituire '$$name$$' nel prototipo, per essere invece un
-            // numero, basato sulla lunghezza attuale dell'elenco.
-            var newForm = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
-
-            // Mostrare il form nella pagina, dentro un li, prima del collegamento "Aggiungere un tag"
-            var $newFormLi = $('<li></li>').append(newForm);
-            $newLinkLi.before($newFormLi);
-        }
     </script>
 {% endblock %}
 
@@ -100,6 +68,8 @@
                 </td>
             </tr>
 
+            {{ form_rest(edit_form) }}
+
             <tr class="odd">
                 <td colspan="2">
                     <button type="submit">Edit</button>
@@ -107,6 +77,18 @@
             </tr>
         </table>
     </form>
+
+    <div>
+        <h3>Aggiungi immagine</h3>
+        <form action="{{ path('admin_photo_add') }}" method="post" {{ form_enctype(photo_form) }}>
+            {{ form_widget(photo_form.file) }}<br/>
+            <label>Didascalia</label>
+            {{ form_widget(photo_form.caption) }}
+            {{ form_rest(photo_form) }}<br/>
+            <input type="hidden" name="album_num" value="{{ entity.id }}" />
+            <input type="submit" value="Aggiungi" />
+        </form>
+    </div>
 
     <ul class="record_actions">
         <li>

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Hellspite\MediaBundle\Entity\Photo;
 use Hellspite\MediaBundle\Form\PhotoType;
+use Hellspite\MediaBundle\Entity\Album;
 
 /**
  * Photo controller.
@@ -13,6 +14,26 @@ use Hellspite\MediaBundle\Form\PhotoType;
  */
 class PhotoController extends Controller
 {
+    public function addAction(){
+        $photo = new Photo();
+        $request = $this->getRequest();    
+        $form = $this->createForm(new PhotoType(), $photo);
+        $form->bindRequest($request);
+
+        $album_id = $this->get('request')->request->get('album_num');
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $album = $em->getRepository('HellspiteMediaBundle:Album')->find($album_id);
+
+        if($form->isValid()){
+            $photo->setAlbum($album);
+            $em->persist($photo);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_album_edit', array('id' => $album_id)));
+    }
+
     /**
      * Lists all Photo entities.
      *

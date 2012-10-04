@@ -19,9 +19,17 @@ class AlbumType extends AbstractType
             ->add('photos', 'collection', array(
                 'type' => new PhotoType(),
                 'allow_add' => true,
+                'allow_delete' => true,
                 'by_reference' => false,
             ))
         ;
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'Hellspite\MediaBundle\Entity\Album',
+        ));
     }
 
     public function getName()

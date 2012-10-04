@@ -6,6 +6,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\PersistenCollection;
+use Hellspite\MediaBundle\Entity\Photo;
 
 /**
  * Hellspite\MediaBundle\Entity\Album
@@ -133,6 +135,14 @@ class Album
     public function getDate()
     {
         return $this->date;
+    }
+
+    public function setPhotos($photos){
+        foreach($photos as $photo){
+            $photo->setAlbum($this);
+        }
+
+        $this->photos = $photos;
     }
 
     /**

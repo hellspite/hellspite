@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Hellspite\MediaBundle\Entity\Album;
 use Hellspite\MediaBundle\Form\AlbumType;
+use Hellspite\MediaBundle\Entity\Photo;
+use Hellspite\MediaBundle\Form\PhotoType;
 
 /**
  * Album controller.
@@ -108,11 +110,13 @@ class AlbumController extends Controller
 
         $editForm = $this->createForm(new AlbumType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
+        $photoForm = $this->createForm(new PhotoType());
 
         return $this->render('HellspiteMediaBundle:Album:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'photo_form' => $photoForm->createView(),
         ));
     }
 

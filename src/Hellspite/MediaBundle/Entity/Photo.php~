@@ -13,6 +13,7 @@ use Imagine\Image\ImageInterface;
  *
  * @ORM\Table(name="photo")
  * @ORM\Entity(repositoryClass="Hellspite\MediaBundle\Entity\PhotoRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Photo
 {
