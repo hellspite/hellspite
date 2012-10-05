@@ -57,7 +57,7 @@
                                     <div class="announce-icon">
                                         <img src="{{ asset(['uploads/photo/thumb/',
                                         entity.photos[k].image] | join) }}" /><br/>
-                                        <button>Delete Image</button><br/><br/>
+                                        <a href="{{ path('admin_photo_delete', {id: entity.photos[k].id, album_num: entity.id}) }}">Delete Image</a><br/><br/>
                                     </div>
                                 {% endif %}
                                 {{ form_row(photo.file) }}

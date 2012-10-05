@@ -176,26 +176,21 @@ class PhotoController extends Controller
      * Deletes a Photo entity.
      *
      */
-    public function deleteAction($id)
+    public function deleteAction($id, $album_num)
     {
-        $form = $this->createDeleteForm($id);
         $request = $this->getRequest();
 
-        $form->bindRequest($request);
+        $em = $this->getDoctrine()->getEntityManager();
+        $entity = $em->getRepository('HellspiteMediaBundle:Photo')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('HellspiteMediaBundle:Photo')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Photo entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Photo entity.');
         }
 
-        return $this->redirect($this->generateUrl('admin_photo'));
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('admin_album_edit', array('id' => $album_num)));
     }
 
     private function createDeleteForm($id)

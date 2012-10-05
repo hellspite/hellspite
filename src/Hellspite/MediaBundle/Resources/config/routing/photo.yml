@@ -30,6 +30,5 @@ admin_photo_update:
     requirements: { _method: post }
 
 admin_photo_delete:
-    pattern:  /{id}/delete
+    pattern:  /{id}/{album_num}/delete
     defaults: { _controller: "HellspiteMediaBundle:Photo:delete" }
-    requirements: { _method: post }
