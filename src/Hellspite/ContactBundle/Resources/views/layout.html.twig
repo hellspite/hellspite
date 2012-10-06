@@ -4,14 +4,38 @@
     {{ parent() }} - Contacts
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{
+    asset('bundles/hellspitecontact/css/contact.css') }}" />
+{% endblock %}
+
 {% block main %}
-    <div class="long box">    
-        <div class="boxhead">
-            {% block contactshead %}
-                Contacts
-            {% endblock %}
-        </div>
+    <div class="left box">    
+        <div class="boxhead">Contacts</div>
         {% block contacts %}{% endblock %}
+    </div>
+
+    <div class="right">
+        <div class="rightbox">
+            <div class="boxhead">Social</div>
+                <div class="social-icon">
+                    <a href="http://www.facebook.com/hellspiterm" target="_blank">
+                        <img src="{{ asset('images/facebook.png') }}" />
+                    </a>
+                </div>
+                <div class="social-icon">
+                    <a href="http://www.twitter.com/HellspiteRM" target="_blank">
+                        <img src="{{ asset('images/twitter.png') }}" />
+                    </a>
+                </div>
+                <div class="social-icon soundcloud">
+                    <a href="http://soundcloud.com/hellspite" target="_blank">
+                        <img src="{{ asset('images/soundcloud.png') }}" />
+                    </a>
+                </div>
+        </div>
     </div>
 {% endblock %}
 
