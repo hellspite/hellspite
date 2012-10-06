@@ -1,0 +1,66 @@
+{% extends '::admin.html.twig' %}
+
+{% block css %}
+    {{ parent() }}
+
+    <link type="text/css" href="{{ asset('css/smoothness/jquery-ui-1.8.21.custom.css') }}" rel="stylesheet" />
+
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('js/ui/i18n/jquery.ui.datepicker-it.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#album_date').datepicker();
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1>New Video</h1>
+
+    <form action="{{ path('admin_video_create') }}" method="post" {{ form_enctype(form) }}>
+        <table>
+            <tr class="odd">
+                <td>{{ form_label(edit_form.title) }}</td>
+                <td>
+                    {{ form_errors(edit_form.title) }}
+                    {{ form_widget(edit_form.title) }}
+                </td>
+            </tr>
+            <tr class="even">
+                <td>{{ form_label(edit_form.subtitle) }}</td>
+                <td>
+                    {{ form_errors(edit_form.subtitle) }}
+                    {{ form_widget(edit_form.subtitle) }}
+                </td>
+            </tr>
+            <tr class="odd">
+                <td>{{ form_label(edit_form.url) }}</td>
+                <td>
+                    {{ form_errors(edit_form.url) }}
+                    {{ form_widget(edit_form.url) }}
+                </td>
+            </tr>
+
+            {{ form_rest(edit_form) }}
+
+            <tr class="even">
+                <td colspan="2">
+                    <button type="submit">Edit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_video') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock %}

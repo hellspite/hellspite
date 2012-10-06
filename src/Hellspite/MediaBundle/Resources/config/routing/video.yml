@@ -1,0 +1,30 @@
+admin_video:
+    pattern:  /
+    defaults: { _controller: "HellspiteMediaBundle:Video:index" }
+
+admin_video_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "HellspiteMediaBundle:Video:show" }
+
+admin_video_new:
+    pattern:  /new
+    defaults: { _controller: "HellspiteMediaBundle:Video:new" }
+
+admin_video_create:
+    pattern:  /create
+    defaults: { _controller: "HellspiteMediaBundle:Video:create" }
+    requirements: { _method: post }
+
+admin_video_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "HellspiteMediaBundle:Video:edit" }
+
+admin_video_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "HellspiteMediaBundle:Video:update" }
+    requirements: { _method: post }
+
+admin_video_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "HellspiteMediaBundle:Video:delete" }
+    requirements: { _method: post }
