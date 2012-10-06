@@ -23,10 +23,21 @@ class AlbumController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('HellspiteMediaBundle:Album')->findAll();
+        //$entities = $em->getRepository('HellspiteMediaBundle:Album')->findAll();
+
+        $dql = "SELECT a FROM HellspiteMediaBundle:Album a";
+        $query = $em->createQuery($dql);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
 
         return $this->render('HellspiteMediaBundle:Album:index.html.twig', array(
-            'entities' => $entities
+            //'entities' => $entities
+            'pagination' => $pagination,
         ));
     }
 
