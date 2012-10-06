@@ -1,0 +1,17 @@
+{% extends 'HellspiteMainBundle:Default:index.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Contacts
+{% endblock %}
+
+{% block main %}
+    <div class="long box">    
+        <div class="boxhead">
+            {% block contactshead %}
+                Contacts
+            {% endblock %}
+        </div>
+        {% block contacts %}{% endblock %}
+    </div>
+{% endblock %}
+

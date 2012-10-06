@@ -1,0 +1,3 @@
+HellspiteContactBundle_homepage:
+    pattern:  /
+    defaults: { _controller: HellspiteContactBundle:Default:index }

@@ -1,0 +1,7 @@
+parameters:
+#    hellspite_contact.example.class: Hellspite\ContactBundle\Example
+
+services:
+#    hellspite_contact.example:
+#        class: %hellspite_contact.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
