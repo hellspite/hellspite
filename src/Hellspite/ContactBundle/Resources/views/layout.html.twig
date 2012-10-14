@@ -11,6 +11,24 @@
     asset('bundles/hellspitecontact/css/contact.css') }}" />
 {% endblock %}
 
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/jquery-1.7.2.min.js')}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {  
+            // Add the class 'button' just like in CSS with a dot in front of it  
+            $('.social-icon-small, .social-icon').append('<span class="hover"></span>').each(function () {  
+                var $span = $('> span.hover', this).css('opacity', 0);  
+                $(this).hover(function () {  
+                    $span.stop().fadeTo(1500, 1); //Change the number 500 to change the speed of the Fade In  
+                }, function () {  
+            $span.stop().fadeTo(500, 0); //Change the number 500 to change the speed of the Fade Out  
+                });  
+            });  
+        });  
+    </script>
+{% endblock %}
+
 {% block main %}
     <div class="left box">    
         <div class="boxhead">Contacts</div>
@@ -20,21 +38,9 @@
     <div class="right">
         <div class="rightbox">
             <div class="boxhead">Social</div>
-                <div class="social-icon">
-                    <a href="http://www.facebook.com/hellspiterm" target="_blank">
-                        <img src="{{ asset('images/facebook.png') }}" />
-                    </a>
-                </div>
-                <div class="social-icon">
-                    <a href="http://www.twitter.com/HellspiteRM" target="_blank">
-                        <img src="{{ asset('images/twitter.png') }}" />
-                    </a>
-                </div>
-                <div class="social-icon soundcloud">
-                    <a href="http://soundcloud.com/hellspite" target="_blank">
-                        <img src="{{ asset('images/soundcloud.png') }}" />
-                    </a>
-                </div>
+                <a class="social-icon-small facebook-btn" href="http://www.facebook.com/hellspiterm" target="_blank"></a>
+                <a class="social-icon-small twitter-btn" href="http://www.twitter.com/HellspiteRM" target="_blank"></a>
+                <a class="social-icon soundcloud" href="http://soundcloud.com/hellspite" target="_blank"></a>
         </div>
     </div>
 {% endblock %}

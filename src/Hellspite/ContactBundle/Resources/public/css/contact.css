@@ -1,9 +1,59 @@
+.social-icon-small{
+    float:left;
+    margin-left:58px;
+    margin-top:20px;
+    width:80px;
+    height:80px;
+    background-position:top;
+    display:block;
+}
+
+.facebook-btn{
+    background-image:url(../../../images/facebook.png);
+}
+
+.twitter-btn{
+    background-image:url(../../../images/twitter.png);
+}
+
 .social-icon{
     float:left;
     margin-left:58px;
     margin-top:20px;
+    width:250px;
+    height:142px;
+    display:block;
+    background-position:top;
 }
 
 .soundcloud{
     margin-left:40px;
+    background-image:url(../../../images/soundcloud.png);
+}
+
+.facebook-btn span.hover{
+    position:absolute;
+    display:block;
+    background:url(../../../images/facebook.png) no-repeat;;
+    background-position:bottom;
+    width:80px;
+    height:80px;
+}
+
+.twitter-btn span.hover{
+    position:absolute;
+    display:block;
+    background:url(../../../images/twitter.png) no-repeat;;
+    background-position:bottom;
+    width:80px;
+    height:80px;
+}
+
+.soundcloud span.hover{
+    position:absolute;
+    display:block;
+    background:url(../../../images/soundcloud.png) no-repeat;;
+    background-position:bottom;
+    width:250px;
+    height:142px;
 }
