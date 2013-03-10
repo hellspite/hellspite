@@ -13,14 +13,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
-            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Hellspite\TemporaryBundle\HellspiteTemporaryBundle(),
             new Hellspite\MainBundle\HellspiteMainBundle(),
             new Hellspite\AnnounceBundle\HellspiteAnnounceBundle(),
@@ -28,6 +27,8 @@ class AppKernel extends Kernel
             new Hellspite\GigBundle\HellspiteGigBundle(),
             new Hellspite\MediaBundle\HellspiteMediaBundle(),
             new Hellspite\ContactBundle\HellspiteContactBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
