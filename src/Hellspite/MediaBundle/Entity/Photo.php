@@ -60,8 +60,8 @@ class Photo
     }
 
     /**
-     * @ORM\prePersist()
-     * @ORM\preUpdate()
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
      */
     public function preUpload(){
         if(is_null($this->file))
@@ -71,8 +71,8 @@ class Photo
     }
 
     /**
-     * @ORM\postPersist()
-     * @ORM\postUpdate()
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
      */
     public function upload(){
         if(is_null($this->file)){
@@ -98,7 +98,7 @@ class Photo
     }
 
     /**
-     * @ORM\postRemove()
+     * @ORM\PostRemove()
      */
     public function removeUpload(){
         if($this->getImage() != '')
