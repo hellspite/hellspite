@@ -6,8 +6,8 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>{{ pagination.sortable('Title', 'a.title')|raw }}</th>
-                <th>{{ pagination.sortable('Date', 'a.date')|raw }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Title', 'a.title')|raw }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Date', 'a.date')|raw }}</th>
                 <th>Actions</th>
             </tr>
         </thead>

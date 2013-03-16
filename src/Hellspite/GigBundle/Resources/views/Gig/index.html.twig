@@ -6,9 +6,9 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>{{ pagination.sortable('Date', 'g.date')|raw }}</th>
-                <th>{{ pagination.sortable('Title', 'g.title')|raw }}</th>
-                <th>{{ pagination.sortable('Venue', 'g.venue')|raw }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Date', 'g.date')|raw }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Title', 'g.title')|raw }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Venue', 'g.venue')|raw }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
