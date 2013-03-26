@@ -1,1 +1,16 @@
 {% extends 'HellspiteContactBundle::layout.html.twig' %}
+
+{% block contacts %}
+    <form action="" method="post" {{ form_enctype(form) }} novalidate>
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.text) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" />
+    </form>
+{% endblock %}
