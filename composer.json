@@ -18,6 +18,7 @@
     "minimum-stability": "alpha",
     "name": "symfony/framework-standard-edition",
     "require": {
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
         "avalanche123/imagine-bundle": "v2.1",
         "doctrine/doctrine-bundle": "1.2.*",
         "doctrine/orm": "~2.2,>=2.2.3",
