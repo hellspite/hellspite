@@ -25,13 +25,6 @@ class Mail{
     /**
      *
      * @Assert\NotBlank()
-     *
-     */
-    private $subject;
-
-    /**
-     *
-     * @Assert\NotBlank()
      * @Assert\Length(
      *     min="4",
      *     minMessage="Your name must have at least {{ limit }} characters."
@@ -53,14 +46,6 @@ class Mail{
 
     public function setEmail($email){
         $this->email = $email;
-    }
-
-    public function getSubject(){
-        return $this->subject;
-    }
-
-    public function setSubject($subject){
-        $this->subject = $subject;
     }
 
     public function getText(){

@@ -12,7 +12,6 @@ class MailType extends AbstractType
         $builder
             ->add('name')
             ->add('email')
-            ->add('subject')
             ->add('text', 'textarea')
         ;
     }

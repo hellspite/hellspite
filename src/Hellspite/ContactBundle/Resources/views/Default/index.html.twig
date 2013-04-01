@@ -1,16 +1,31 @@
 {% extends 'HellspiteContactBundle::layout.html.twig' %}
 
 {% block contacts %}
-    <form action="" method="post" {{ form_enctype(form) }} novalidate>
-        {{ form_errors(form) }}
+    <div id="contact-form">
+        <form action="" method="post" {{ form_enctype(form) }} novalidate>
+            {{ form_errors(form) }}
+    
+            <div>
+                {{ form_label(form.name) }}
+                {{ form_errors(form.name, {'attr' : {'class': 'error'}}) }}
+                {{ form_widget(form.name, {'attr' : {'class': 'text'}}) }}
+            </div>
+            <div>
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email, {'attr' : {'class': 'error'}}) }}
+                {{ form_widget(form.email, {'attr' : {'class': 'text'}}) }}
+            </div>
+            <div>
+                {{ form_label(form.text) }}
+                {{ form_errors(form.text, {'attr' : {'class': 'error'}}) }}
+                {{ form_widget(form.text, {'attr' : {'class': 'area'}}) }}
+            </div>
+    
+            {{ form_rest(form) }}
+    
+            <button id="contact-submit" type="submit">Invia</button>
 
-        {{ form_row(form.name) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.subject) }}
-        {{ form_row(form.text) }}
-
-        {{ form_rest(form) }}
-
-        <input type="submit" />
-    </form>
+            <div style="clear:both"></div>
+        </form>
+    </div>
 {% endblock %}
