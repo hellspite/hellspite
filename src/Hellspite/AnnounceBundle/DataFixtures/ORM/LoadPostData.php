@@ -31,13 +31,13 @@ class LoadUserData implements FixtureInterface
 
         $today->setTitle('Prova oggi');
         $today->setText('Lorem ipsum dolor sit amet');
-        $today->setTranslatableLocale('it_it');
+        $today->setTranslatableLocale('it');
 
         $manager->persist($today);
 
         $yesterday->setTitle('Prova ieri');
         $yesterday->setText('Lorem ipsum dolor sit amet');
-        $yesterday->setTranslatableLocale('it_it');
+        $yesterday->setTranslatableLocale('it');
          
         $manager->persist($yesterday);
 

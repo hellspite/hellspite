@@ -11,5 +11,4 @@ parameters:
     mailer_user:       hellspite@hellspite.com
     mailer_password:   hellmail89
 
-    locale:            en
     secret:            966103b374a03798f5838f8d7ffd1a461

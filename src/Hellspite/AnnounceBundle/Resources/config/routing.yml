@@ -3,5 +3,7 @@ HellspiteAnnounceBundle_homepage:
     defaults: { _controller: HellspiteAnnounceBundle:Default:index }
 
 HellspiteAnnounceBundle_show:
-    pattern:  /post/{slug}
+    pattern:  /{_locale}/post/{slug}
     defaults: { _controller: HellspiteAnnounceBundle:Default:show }
+    requirements:
+       _locale:  en|it
