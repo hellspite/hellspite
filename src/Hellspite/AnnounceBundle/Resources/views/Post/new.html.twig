@@ -22,7 +22,7 @@
 {% block content %}
     <h1>New Post</h1>
 
-    <form action="{{ path('admin_post_create') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('admin_post_create') }}" method="post" {{ form_enctype(form) }} novalidate>
         <table>
             <tr class="odd">
                 <td>{{ form_label(form.date) }}</td>
@@ -32,24 +32,43 @@
                 </td>
             </tr>
             <tr class="even">
-                <td>{{ form_label(form.title) }}</td>
+                <td>{{ form_label(form.title_en) }}</td>
                 <td>
-                    {{ form_errors(form.title) }}
-                    {{ form_widget(form.title) }}
+                    {{ form_errors(form.title_en) }}
+                    {{ form_widget(form.title_en) }}
                 </td>
             </tr>
             <tr class="odd">
+                <td>{{ form_label(form.title_it) }}</td>
+                <td>
+                    {{ form_errors(form.title_it) }}
+                    {{ form_widget(form.title_it) }}
+                </td>
+            </tr>
+            <tr class="even">
                 <td>{{ form_label(form.file) }}</td>
                 <td>
                     {{ form_errors(form.file) }}
                     {{ form_widget(form.file) }}
                 </td>
             </tr>
-            <tr class="even">
-                <td>{{ form_label(form.text) }}</td>
+            <tr class="odd">
+                <td>{{ form_label(form.text_en) }}</td>
                 <td>
-                    {{ form_errors(form.text) }}
-                    {{ form_widget(form.text) }}
+                    {{ form_errors(form.text_en) }}
+                    {{ form_widget(form.text_en) }}
+                </td>
+            </tr>
+            <tr class="even">
+                <td>{{ form_label(form.text_it) }}</td>
+                <td>
+                    {{ form_errors(form.text_it) }}
+                    {{ form_widget(form.text_it) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
                 </td>
             </tr>
 

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -54,7 +55,7 @@ class Post
     /**
      * @var text $text
      * @Gedmo\Translatable
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
 
@@ -62,6 +63,41 @@ class Post
      * @Gedmo\Locale
      */
     private $locale;
+
+    private $title_en;
+
+    private $title_it;
+
+    private $text_en;
+
+    private $text_it;
+
+    /**
+     * @ORM\OneToMany(
+     *   targetEntity="PostTranslation",
+     *   mappedBy="object",
+     *   cascade={"persist", "remove"}
+     * )
+     */
+    private $translations;
+
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
+
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    public function addTranslation(PostTranslation $t)
+    {
+        if (!$this->translations->contains($t)) {
+            $this->translations[] = $t;
+            $t->setObject($this);
+        }
+    }
 
     /**
      * @Gedmo\Slug(fields={"title"})
@@ -241,8 +277,45 @@ class Post
         return $this->slug;
     }
 
+    public function setTitleEn($t){
+        $this->title_en = $t;
+
+    }
+
+    public function getTitleEn(){
+        return $this->title_en;
+    }
+
+    public function setTitleIt($t){
+        $this->title_it = $t;
+
+    }
+
+    public function getTitleIt(){
+        return $this->title_it;
+    }
+
+    public function setTextEn($t){
+        $this->text_en = $t;
+
+    }
+
+    public function getTextEn(){
+        return $this->text_en;
+    }
+
+    public function setTextIt($t){
+        $this->text_it = $t;
+
+    }
+
+    public function getTextIt(){
+        return $this->text_it;
+    }
+
     public function setTranslatableLocale($locale)
     {
         $this->locale = $locale;
     }
+
 }

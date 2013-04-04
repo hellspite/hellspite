@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Hellspite\AnnounceBundle\Entity\Post;
 use Hellspite\AnnounceBundle\Form\PostType;
+use Hellspite\AnnounceBundle\Entity\PostTranslation;
 
 /**
  * Post controller.
@@ -19,7 +20,7 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         //$entities = $em->getRepository('HellspiteAnnounceBundle:Post')->getLatest(null);
 
@@ -45,7 +46,7 @@ class PostController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HellspiteAnnounceBundle:Post')->find($id);
 
@@ -89,7 +90,19 @@ class PostController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $entity->setTitle($entity->getTitleEn());
+            $entity->setText($entity->getTextEn());
+
+            $entity->addTranslation(new PostTranslation('it', 'title', $entity->getTitleIt()));
+            $entity->addTranslation(new PostTranslation('it', 'text', $entity->getTextIt()));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            $entity->setTitle($entity->getTitleIt());
+            $entity->setText($entity->getTextIt());
+            $entity->setTranslatableLocale('it');
             $em->persist($entity);
             $em->flush();
 
@@ -109,13 +122,21 @@ class PostController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HellspiteAnnounceBundle:Post')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Post entity.');
         }
+
+        $entity->setTitleEn($entity->getTitle());
+        $entity->setTextEn($entity->getText());
+
+        $translations = $entity->getTranslations();
+        $entity->setTitleIt($translations->get(0)->getContent());
+        $entity->setTextIt($translations->get(1)->getContent());
+
 
         $editForm = $this->createForm(new PostType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -133,7 +154,7 @@ class PostController extends Controller
      */
     public function updateAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HellspiteAnnounceBundle:Post')->find($id);
 
@@ -149,6 +170,20 @@ class PostController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->setTitle($entity->getTitleEn());
+            $entity->setText($entity->getTextEn());
+
+            $translations = $entity->getTranslations();
+            $translations[0]->update($entity->getTitleIt());
+            $translations[1]->update($entity->getTextIt());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            $entity->setTitle($entity->getTitleIt());
+            $entity->setText($entity->getTextIt());
+            $entity->setTranslatableLocale('it');
             $em->persist($entity);
             $em->flush();
 
@@ -174,7 +209,7 @@ class PostController extends Controller
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('HellspiteAnnounceBundle:Post')->find($id);
 
             if (!$entity) {
@@ -198,7 +233,7 @@ class PostController extends Controller
 
     public function deleteIconAction($id){
     
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HellspiteAnnounceBundle:Post')->find($id);
 

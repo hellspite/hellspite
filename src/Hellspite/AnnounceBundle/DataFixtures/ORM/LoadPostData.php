@@ -4,6 +4,7 @@ namespace Hellspite\AnnounceBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Hellspite\AnnounceBundle\Entity\Post;
+use Hellspite\AnnounceBundle\Entity\PostTranslation;
 
 class LoadUserData implements FixtureInterface
 {
@@ -17,6 +18,9 @@ class LoadUserData implements FixtureInterface
         $today->setTitle('Test today');
         $today->setText('Lorem ipsum dolor sit amet');
 
+        $today->addTranslation(new PostTranslation('it', 'title', 'Prova Oggi'));
+        $today->addTranslation(new PostTranslation('it', 'text', 'Prova Oggi Testo'));
+
         $manager->persist($today);
 
 
@@ -24,19 +28,22 @@ class LoadUserData implements FixtureInterface
         $yesterday->setDate($y);
         $yesterday->setTitle('Test yesterday');
         $yesterday->setText('Lorem ipsum dolor sit amet');
+
+        $yesterday->addTranslation(new PostTranslation('it', 'title', 'Prova Ieri'));
+        $yesterday->addTranslation(new PostTranslation('it', 'text', 'Prova Ieri Testo'));
          
         $manager->persist($yesterday);
 
         $manager->flush();
 
-        $today->setTitle('Prova oggi');
-        $today->setText('Lorem ipsum dolor sit amet');
+        $today->setTitle('Prova Oggi');
+        $today->setText('Prova Oggi Testo');
         $today->setTranslatableLocale('it');
 
         $manager->persist($today);
 
-        $yesterday->setTitle('Prova ieri');
-        $yesterday->setText('Lorem ipsum dolor sit amet');
+        $yesterday->setTitle('Prova Ieri');
+        $yesterday->setText('Prova Ieri Testo');
         $yesterday->setTranslatableLocale('it');
          
         $manager->persist($yesterday);
